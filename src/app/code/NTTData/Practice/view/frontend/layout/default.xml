@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">             
+            <container name="productlist.container" htmlTag="div" htmlClass="product-list-container"> 
+                <block class="NTTData\Practice\Block\Product\ProductList" name="productlist.block" template="NTTData_Practice::product/productlist.phtml" />
+                <referenceContainer name="productlist.container"> 
+                    <container name="productlist.header.container" htmlTag="div" htmlClass="product-list-header">    
+                        <block class="NTTData\Practice\Block\Product\List\Header" name="productlist.header.block" template="NTTData_Practice::product/list/header.phtml" />               
+                    </container>                 
+                    <container name="productlist.products.container" htmlTag="div" htmlClass="product-list-products"> 
+                        <block class="NTTData\Practice\Block\Product\List\Products" name="productlist.products.block" template="NTTData_Practice::product/list/products.phtml" />                 
+                    </container>  
+                </referenceContainer>    
+            </container>         
+        </referenceContainer>    
+    </body>
+</page>

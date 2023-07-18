@@ -16,19 +16,15 @@ class ProductList extends \Magento\Framework\App\Action\Action
 		return parent::__construct($context);
 	}
 
-	public function execute()
-	{
+	public function getCollection(){
 		$products = $this->_productCollectionFactory->create();
         $products->addAttributeToSelect(['entity_id','name','image']);
         $products->addAttributeToSort('name', 'desc');
         $products->setPageSize(10)->load();
-		foreach ($products as $product) {
-			$productId = $product->getId();
-			$productName = $product->getName();
-			$productImage = $product->getData('image');
-			echo "Product ID: $productId<br>Product name: $productName<br>Product image: $productImage<br><br>";
-		}
+		return $products;
+	}
 
-		die();
+	public function execute(){
+		return $this->_pageFactory->create();
 	}
 }
