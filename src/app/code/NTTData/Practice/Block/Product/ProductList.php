@@ -6,9 +6,4 @@ class ProductList extends \Magento\Framework\View\Element\Template
 	{
 		parent::__construct($context);
 	}
-
-	public function getClass()
-    {
-        return __(get_class($this));
-    }
 }
