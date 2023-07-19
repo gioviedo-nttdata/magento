@@ -16,7 +16,8 @@
                         <block class="NTTData\Practice\Block\Product\List\Products" name="productlist.products.block" template="NTTData_Practice::product/list/products.phtml" />                 
                     </container>  
                 </referenceContainer>    
-            </container>         
+            </container>
+            <block class="NTTData\Practice\Block\Time\Hour" name="hour.block" template="NTTData_Practice::time/hour.phtml" />         
         </referenceContainer>    
     </body>
 </page>
