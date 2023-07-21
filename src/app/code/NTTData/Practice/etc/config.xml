@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <practice>
+            <test>
+                <enabled>1</enabled>
+                <order_direction>asc</order_direction>
+                <order_field>name</order_field>
+                <limit>10</limit>
+            </test>
+        </practice>
+    </default>
+</config>

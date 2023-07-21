@@ -5,4 +5,24 @@
  */
 echo '<h3>' . get_class($block) . '</h3>'; 
 
+$enabled = $block->enableModule();
 
+if($enabled){
+
+    $products = $block->getCollection();
+
+    if(!count($products)) echo 'No hay productos';
+
+    foreach ($products as $product) {
+        $productId = $product->getId();
+        $productName = $product->getName();
+        $productPrice = $product->getPrice();
+        $productImage = $product->getData('image');
+        echo "Product ID: $productId<br>Product name: $productName<br>Product price: $productPrice<br>Product image: $productImage<br><br>";
+    }
+    
+}else{
+
+    echo 'Esta configuraciòn esta apagada';
+
+}
