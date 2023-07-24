@@ -7,24 +7,26 @@ use Magento\Framework\Data\OptionSourceInterface;
 class OrderField implements OptionSourceInterface
 {
 
-    protected $attributesCollection;
+    protected $_catalogConfig;
 
-    public function __construct(\Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory $attributesCollection){
-        $this->attributesCollection = $attributesCollection;
+    public function __construct(\Magento\Catalog\Model\Config $catalogConfig){
+        $this->_catalogConfig = $catalogConfig;
     }
 
+    //se traen los atributos con la clase de magento que ya se encarga de crear la collection y aplicarle los filtros correspondientes
     public function toOptionArray(){
-        $options = [];
-        $attributes = $this->attributesCollection->create();
-        $attributes->addFieldToFilter('used_for_sort_by',1);
 
-        foreach($attributes as $attributeObj){
+        $options = [];
+        $attributes = $this->_catalogConfig->getAttributeUsedForSortByArray();
+
+        foreach($attributes as $code => $label){
             $options[] = [
-                            'value' => $attributeObj->getAttributeCode(),
-                            'label' => $attributeObj->getFrontendLabel()
+                            'value' => $code,
+                            'label' => $label
                         ];
         }
 
         return $options;
     }
+
 }
