@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="nttdata_empresa_empleados" resource="default" engine="innodb" comment="Tabla de empleados de la empresa">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="nombre" nullable="false" comment="Nombre"/>
+        <column xsi:type="text" name="apellido" nullable="false" comment="Apellido"/>
+        <column xsi:type="smallint" name="edad" nullable="false" comment="Edad"/>
+        <column xsi:type="text" name="puesto" nullable="true" comment="Puesto"/>
+        <column xsi:type="text" name="especialidad" nullable="true" comment="Especialidad"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>
+
