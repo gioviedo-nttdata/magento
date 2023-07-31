@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">empresa_empleados_form.empresa_empleados_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">News Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="NTTData\Empresa\Block\Adminhtml\Empleados\Edit\SaveButton"/>
+        </buttons>
+        <namespace>empresa_empleados_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>empresa_empleados_form.empresa_empleados_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="empresa_empleados_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="empresa/empleados/save"/>
+        </settings>
+        <dataProvider class="NTTData\Empresa\Ui\DataProvider\Empleados\ActionsDataProvider" name="empresa_empleados_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="empleado">
+		<settings>
+			<label>Empleado</label>
+		</settings>
+        <field name="id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">empleado</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+		<field name="nombre" formElement="input">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">empleado</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Nombre</label>
+				<dataScope>nombre</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field name="apellido" formElement="input">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">empleado</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Apellido</label>
+				<dataScope>apellido</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+        <field name="edad" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">empleado</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Edad</label>
+                <dataScope>edad</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="puesto" formElement="select">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Puesto</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="NTTData\Empresa\Model\Config\Source\PuestoOptions"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="especialidad" formElement="select">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Especialidad</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="NTTData\Empresa\Model\Config\Source\EspecialidadOptions"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+	</fieldset>
+</form>

@@ -4,9 +4,34 @@
         <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
         <column xsi:type="text" name="nombre" nullable="false" comment="Nombre"/>
         <column xsi:type="text" name="apellido" nullable="false" comment="Apellido"/>
-        <column xsi:type="smallint" name="edad" nullable="false" comment="Edad"/>
-        <column xsi:type="text" name="puesto" nullable="true" comment="Puesto"/>
-        <column xsi:type="text" name="especialidad" nullable="true" comment="Especialidad"/>
+        <column xsi:type="date" name="fecha_nacimiento" nullable="false" comment="Fecha de nacimiento"/>
+        <column xsi:type="int" name="id_puesto" nullable="true" comment="ID puesto"/>
+        <column xsi:type="int" name="id_especialidad" nullable="true" comment="ID especialidad"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_empresa_puestos" resource="default" engine="innodb" comment="Tabla de puestos de la empresa">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="nombre" nullable="false" comment="Puesto"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_empresa_especialidades" resource="default" engine="innodb" comment="Tabla de especialidades de la empresa">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="nombre" nullable="false" comment="Especialidad"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_empresa_puestos_especialidades" resource="default" engine="innodb" comment="Tabla de relacion de puestos y especialidades de la empresa">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="int" name="id_puesto" nullable="true" comment="ID puesto"/>
+        <column xsi:type="int" name="id_especialidad" nullable="true" comment="ID especialidad"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
         </constraint>
