@@ -24,6 +24,8 @@ class Save extends \Magento\Backend\App\Action
 
         if($data){
             $msg = 'Empleado editado correctamente';
+            $fechaNac = new \DateTime($data['fecha_nacimiento']);
+            $data['fecha_nacimiento'] = $fechaNac->format('Y-m-d');
             if (empty($data['id'])) {
                 $data['id'] = null;
                 $msg = 'Empleado agregado correctamente';
@@ -31,6 +33,7 @@ class Save extends \Magento\Backend\App\Action
 
             $model->setData($data);
             $model->save();
+
             $this->messageManager->addSuccessMessage(__($msg));
         }
        

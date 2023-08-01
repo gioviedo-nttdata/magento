@@ -29,9 +29,6 @@
                     <item name="storageConfig" xsi:type="array">
                         <item name="indexField" xsi:type="string">id</item>
                     </item>
-                    <item name="filter_url_params" xsi:type="array">
-                        <item name="fecha_nacimiento" xsi:type="string">*</item>
-                    </item>
                 </item>
             </argument>
         </argument>
