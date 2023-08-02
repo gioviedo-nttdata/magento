@@ -4,12 +4,12 @@ namespace NTTData\Empresa\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
 
-class PuestoOptions implements OptionSourceInterface
+class EspecialidadOptions implements OptionSourceInterface
 {
 
     protected $collectionFactory;
 
-    public function __construct(\NTTData\Empresa\Model\ResourceModel\Puesto\CollectionFactory $collectionFactory){
+    public function __construct(\NTTData\Empresa\Model\ResourceModel\Especialidad\CollectionFactory $collectionFactory){
         $this->collectionFactory = $collectionFactory;
     }
 

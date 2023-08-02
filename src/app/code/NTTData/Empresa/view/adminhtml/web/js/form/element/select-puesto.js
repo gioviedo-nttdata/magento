@@ -8,13 +8,15 @@ define([
 ], function ($, _, uiRegistry, select, modal, url) {
     'use strict';
     return select.extend({
-        onUpdate: function (value){
+        initialize: function () {
+            this._super();
+            let initialValue = this.value();
+            if(typeof initialValue != 'undefined') this.value('No existe');
+            this.value(initialValue);
+        },
 
+        onUpdate: function (value){
             let urlAjax =  url.build('/admin/empresa/empleados/especialidadoptions/');
-            
-            $('select[name="id_especialidad"]').html('');
-            $('select[name="id_especialidad"]').val('').trigger("change");
-            $('select[name="id_especialidad"]').attr('disabled',true);
 
             $.ajax({
                 url: urlAjax,
@@ -25,14 +27,32 @@ define([
                     form_key: window.FORM_KEY
                 },
                 success: function(result){
+                    let initVal = $('select[name="id_especialidad"]').val();
+                    
+                    $('select[name="id_especialidad"]').empty();
+                   
+                    
                     $.each(result, function (index, value) {
                         $('select[name="id_especialidad"]').append($('<option>', {
                             value: value.value,
                             text: value.label
                         }));
-                        $('select[name="id_especialidad"]').attr('disabled',false);
                     });
-                }
+
+                    console.log(initVal);
+                    
+                    if($('select[name="id_especialidad"]').find('option[value="'+ initVal + '"]').length){
+                        $('select[name="id_especialidad"]').val(initVal);
+                    }else{
+                        $('select[name="id_especialidad"]').val('').trigger('change');
+                    }
+                },
+                complete: function(result){
+                    if(typeof value == 'undefined'){
+                        $('select[name="id_especialidad"]').empty();
+                        $('select[name="id_especialidad"]').val('').trigger('change');
+                    }
+                },
             });
 
             return this._super();
