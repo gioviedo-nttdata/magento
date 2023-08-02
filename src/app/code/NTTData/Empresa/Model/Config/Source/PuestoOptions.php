@@ -17,6 +17,11 @@ class PuestoOptions implements OptionSourceInterface
         $options = [];
         $items = $this->collectionFactory->create();
 
+        $options[] = [
+            'value' => '',
+            'label' => __('Seleccione una opciòn')
+        ];
+
         foreach($items as $item){
             $options[] = [
                             'value' => $item->getId(),

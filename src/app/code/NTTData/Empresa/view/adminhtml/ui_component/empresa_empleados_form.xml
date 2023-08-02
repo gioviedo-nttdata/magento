@@ -90,37 +90,35 @@
                 </validation>
             </settings>
         </field>
-        <field name="puesto" formElement="select">
-            <settings>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">true</rule>
-                </validation>
-                <dataType>text</dataType>
-                <label translate="true">Puesto</label>
-            </settings>
-            <formElements>
-                <select>
-                    <settings>
-                        <options class="NTTData\Empresa\Model\Config\Source\PuestoOptions"/>
-                    </settings>
-                </select>
-            </formElements>
+        <field name="id_puesto">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">NTTData\Empresa\Model\Config\Source\PuestoOptions</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Puesto</item>
+                    <item name="component" xsi:type="string">NTTData_Empresa/js/form/element/select-puesto</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">modulename</item>
+                    <item name="dataScope" xsi:type="string">id_puesto</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
         </field>
-        <field name="especialidad" formElement="select">
-            <settings>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">true</rule>
-                </validation>
-                <dataType>text</dataType>
-                <label translate="true">Especialidad</label>
-            </settings>
-            <formElements>
-                <select>
-                    <settings>
-                        <options class="NTTData\Empresa\Model\Config\Source\EspecialidadOptions"/>
-                    </settings>
-                </select>
-            </formElements>
+        <field name="id_especialidad">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Especialidad</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">modulename</item>
+                    <item name="dataScope" xsi:type="string">id_especialidad</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
         </field>
 	</fieldset>
 </form>
