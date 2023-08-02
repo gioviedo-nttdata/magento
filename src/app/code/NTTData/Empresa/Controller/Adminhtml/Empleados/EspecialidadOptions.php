@@ -22,10 +22,6 @@ class EspecialidadOptions extends \Magento\Backend\App\Action
         $id_puesto = $this->getRequest()->getParam('id_puesto');
         
         $options = [];
-        $options[] = [
-            'value' => '',
-            'label' => __('Seleccione una opciòn')
-        ];
 
         $items = $this->collectionFactory->create();
         $items->addFieldToFilter('id_puesto',$id_puesto);

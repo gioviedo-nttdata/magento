@@ -11,11 +11,11 @@ define([
         initialize: function () {
             this._super();
             let initialValue = this.value();
-            if(typeof initialValue != 'undefined') this.value('No existe');
-            this.value(initialValue);
+            if(typeof initialValue != 'undefined') this.onUpdate(initialValue);
+            return this;
         },
-
         onUpdate: function (value){
+            let selectEspecialidad = uiRegistry.get('index = id_especialidad');
             let urlAjax =  url.build('/admin/empresa/empleados/especialidadoptions/');
 
             $.ajax({
@@ -27,34 +27,15 @@ define([
                     form_key: window.FORM_KEY
                 },
                 success: function(result){
-                    let initVal = $('select[name="id_especialidad"]').val();
-                    
-                    $('select[name="id_especialidad"]').empty();
-                   
-                    
+                    selectEspecialidad.options([]);
                     $.each(result, function (index, value) {
-                        $('select[name="id_especialidad"]').append($('<option>', {
+                        selectEspecialidad.options.push({
                             value: value.value,
-                            text: value.label
-                        }));
+                            label: value.label
+                        });
                     });
-
-                    console.log(initVal);
-                    
-                    if($('select[name="id_especialidad"]').find('option[value="'+ initVal + '"]').length){
-                        $('select[name="id_especialidad"]').val(initVal);
-                    }else{
-                        $('select[name="id_especialidad"]').val('').trigger('change');
-                    }
-                },
-                complete: function(result){
-                    if(typeof value == 'undefined'){
-                        $('select[name="id_especialidad"]').empty();
-                        $('select[name="id_especialidad"]').val('').trigger('change');
-                    }
-                },
+                }
             });
-
             return this._super();
         },
     });

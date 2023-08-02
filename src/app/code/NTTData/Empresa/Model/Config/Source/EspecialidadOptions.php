@@ -17,11 +17,6 @@ class EspecialidadOptions implements OptionSourceInterface
         $options = [];
         $items = $this->collectionFactory->create();
 
-        $options[] = [
-            'value' => '',
-            'label' => __('Seleccione una opcion')
-        ];
-
         foreach($items as $item){
             $options[] = [
                             'value' => $item->getId(),
