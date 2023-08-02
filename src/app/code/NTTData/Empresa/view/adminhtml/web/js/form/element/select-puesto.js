@@ -4,7 +4,8 @@ define([
     'uiRegistry',
     'Magento_Ui/js/form/element/select',
     'Magento_Ui/js/modal/modal',
-    'mage/url'
+    'mage/url',
+    'domReady!'
 ], function ($, _, uiRegistry, select, modal, url) {
     'use strict';
     return select.extend({
