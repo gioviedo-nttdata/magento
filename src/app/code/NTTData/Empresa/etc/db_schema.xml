@@ -13,19 +13,19 @@
     </table>
 
     <table name="nttdata_empresa_puestos" resource="default" engine="innodb" comment="Tabla de puestos de la empresa">
-        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
-        <column xsi:type="text" name="nombre" nullable="false" comment="Puesto"/>
+        <column xsi:type="int" name="puesto_id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="puesto_nombre" nullable="false" comment="Puesto"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
-            <column name="id"/>
+            <column name="puesto_id"/>
         </constraint>
     </table>
 
     <table name="nttdata_empresa_especialidades" resource="default" engine="innodb" comment="Tabla de especialidades de la empresa">
-        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
-        <column xsi:type="text" name="nombre" nullable="false" comment="Especialidad"/>
-        <column xsi:type="int" name="id_puesto" nullable="false" comment="ID puesto"/>
+        <column xsi:type="int" name="especialidad_id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="especialidad_nombre" nullable="false" comment="Especialidad"/>
+        <column xsi:type="int" name="fk_id_puesto" nullable="false" comment="ID puesto"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
-            <column name="id"/>
+            <column name="especialidad_id"/>
         </constraint>
     </table>
 </schema>

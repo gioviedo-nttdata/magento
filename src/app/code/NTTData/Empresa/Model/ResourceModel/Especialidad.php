@@ -8,6 +8,6 @@ class Especialidad extends AbstractDb
 {
     protected function _construct()
     {
-        $this->_init('nttdata_empresa_especialidades', 'id');
+        $this->_init('nttdata_empresa_especialidades', 'especialidad_id');
     }
 }

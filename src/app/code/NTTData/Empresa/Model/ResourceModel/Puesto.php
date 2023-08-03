@@ -8,6 +8,6 @@ class Puesto extends AbstractDb
 {
     protected function _construct()
     {
-        $this->_init('nttdata_empresa_puestos', 'id');
+        $this->_init('nttdata_empresa_puestos', 'puesto_id');
     }
 }

@@ -24,12 +24,12 @@ class EspecialidadOptions extends \Magento\Backend\App\Action
         $options = [];
 
         $items = $this->collectionFactory->create();
-        $items->addFieldToFilter('id_puesto',$id_puesto);
+        $items->addFieldToFilter('fk_id_puesto',$id_puesto);
 
         foreach($items as $item){
             $options[] = [
-                            'value' => $item->getId(),
-                            'label' => $item->getNombre()
+                            'value' => $item->getEspecialidadId(),
+                            'label' => $item->getEspecialidadNombre()
                         ];
         }
 

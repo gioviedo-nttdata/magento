@@ -55,12 +55,10 @@ class Collection extends EmpleadosCollection implements SearchResultInterface
 
         $this->getSelect()->joinLeft(
                 ['secondTable' => $this->getTable('nttdata_empresa_puestos')],
-                'main_table.id_puesto = secondTable.id',
-                ['nombre AS puesto']
+                'main_table.id_puesto = secondTable.puesto_id'
             )->joinLeft(
                 ['thirdTable' => $this->getTable('nttdata_empresa_especialidades')],
-                'main_table.id_especialidad = thirdTable.id',
-                ['nombre AS especialidad']
+                'main_table.id_especialidad = thirdTable.especialidad_id'
             );
     }
 
