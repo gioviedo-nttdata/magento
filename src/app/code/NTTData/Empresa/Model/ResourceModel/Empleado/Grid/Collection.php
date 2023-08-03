@@ -37,24 +37,41 @@ class Collection extends EmpleadosCollection implements SearchResultInterface
         $this->_helper = $helper;
     }
 
-    protected function _initSelect(){
+    protected function _initSelect()
+    {
         parent::_initSelect();
-
+    
         $this->getSelect()->joinLeft(
-                ['secondTable' => $this->getTable('nttdata_empresa_puestos')],
-                'main_table.id_puesto = secondTable.puesto_id'
-            )->joinLeft(
-                ['thirdTable' => $this->getTable('nttdata_empresa_especialidades')],
-                'main_table.id_especialidad = thirdTable.especialidad_id'
-            );
+            ['secondTable' => $this->getTable('nttdata_empresa_puestos')],
+            'main_table.id_puesto = secondTable.puesto_id'
+        )->joinLeft(
+            ['thirdTable' => $this->getTable('nttdata_empresa_especialidades')],
+            'main_table.id_especialidad = thirdTable.especialidad_id'
+        );
+    
+        $this->getSelect()->columns(
+            [
+                'edad' => new \Zend_Db_Expr('TIMESTAMPDIFF(YEAR, main_table.fecha_nacimiento, CURDATE())')
+            ]
+        );
 
-            $this->getSelect()->columns(
-                [
-                    'edad' => new \Zend_Db_Expr('TIMESTAMPDIFF(YEAR, main_table.fecha_nacimiento, CURDATE())')
-                ]
-            );
+        $this->addFilterToMap('edad', 'edad');
+       
+        return $this;
     }
 
+    public function addFieldToFilter($field, $condition = null)
+    {
+        if ($field === 'edad') {
+            //var_dump($condition);
+            $this->getSelect()->where("TIMESTAMPDIFF(YEAR, main_table.fecha_nacimiento, CURDATE()) = " . str_replace('%','',$condition['like']));
+            //echo $this->getSelect()->__toString();
+            return $this;
+        }
+    
+        return parent::addFieldToFilter($field, $condition);
+    }
+    
     public function getAggregations()
     {
         return $this->aggregations;
