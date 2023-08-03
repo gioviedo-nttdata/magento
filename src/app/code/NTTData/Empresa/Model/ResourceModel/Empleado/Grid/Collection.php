@@ -37,19 +37,6 @@ class Collection extends EmpleadosCollection implements SearchResultInterface
         $this->_helper = $helper;
     }
 
-    public function getData(){
-        $data = parent::getData();
-        foreach ($data as &$item) {
-            $item['edad'] = '';
-            if (isset($item['fecha_nacimiento'])) {
-                $birthdate = $item['fecha_nacimiento'];
-                $age = $this->_helper->calculateAge($birthdate);
-                $item['edad'] = $age;
-            }
-        }
-        return $data;
-    }
-
     protected function _initSelect(){
         parent::_initSelect();
 
@@ -59,6 +46,12 @@ class Collection extends EmpleadosCollection implements SearchResultInterface
             )->joinLeft(
                 ['thirdTable' => $this->getTable('nttdata_empresa_especialidades')],
                 'main_table.id_especialidad = thirdTable.especialidad_id'
+            );
+
+            $this->getSelect()->columns(
+                [
+                    'edad' => new \Zend_Db_Expr('TIMESTAMPDIFF(YEAR, main_table.fecha_nacimiento, CURDATE())')
+                ]
             );
     }
 
