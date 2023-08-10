@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="NTTData_Api/css/pokemon/index.css" />
+    </head>
+    <body>
+        <referenceContainer name="content">             
+            <container name="pokemon.index.container" htmlTag="div" htmlClass="pokemon-index-container"> 
+                <block class="NTTData\Api\Block\Pokemon\Index" name="pokemon.index.block" template="NTTData_Api::pokemon/index.phtml">
+                    <block class="Magento\Framework\View\Element\Template" name="pokemon.card.block" template="NTTData_Api::pokemon/card.phtml" />
+                </block>
+            </container>
+        </referenceContainer>    
+    </body>
+</page>

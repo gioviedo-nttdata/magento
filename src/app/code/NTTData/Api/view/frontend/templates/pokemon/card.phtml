@@ -1,0 +1,15 @@
+<?php
+$pokemon = $this->getData('pokemon');
+?>
+
+<div class="pokemon-card">
+    <img src="<?=$pokemon['image']?>">
+    <h3><?=$pokemon['name']?></h3>
+    <div>
+        <ul>
+            <?php unset($pokemon['image']); foreach($pokemon as $key => $val){ ?>
+            <li><b><?=ucfirst($key)?></b> : <?=$val ? $val : 'N/A'?></li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>

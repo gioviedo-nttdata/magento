@@ -1,0 +1,24 @@
+<?php
+
+if(!$block->isEnabled()){
+
+    echo _('Module disabed');
+    
+}else{
+    $data = $block->getDataPokemon();
+    $pokemon_arr = $data['pokemon_arr'];
+
+    echo $data['message'];
+    
+    foreach ($pokemon_arr as $pokemon) {
+        $childBlock = $this->getChildBlock('pokemon.card.block');
+        $childBlock->setData('pokemon', $pokemon);
+        echo $childBlock->toHtml();
+    }
+
+}
+
+
+
+
+
