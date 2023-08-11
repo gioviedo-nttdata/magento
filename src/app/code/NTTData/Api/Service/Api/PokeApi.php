@@ -9,23 +9,28 @@ class PokeApi{
     protected $baseURL;
     protected $endpointAll;
 	protected $message;
+	protected $collection;
+	protected $model;
 
     public function __construct(
         \NTTData\Api\Service\ApiService $apiService,
-        \NTTData\Api\Helper\Data $helper
+        \NTTData\Api\Helper\Data $helper,
+		\NTTData\Api\Model\ResourceModel\Pokemon\CollectionFactory $collection,
+		\NTTData\Api\Model\PokemonFactory $model
     ) {
         $this->apiService = $apiService;
         $this->helper = $helper;
         $this->baseURL = $this->helper->getBaseURL();
         $this->endpointAll = $this->helper->getEndpointAll();
+		$this->collection = $collection;
+		$this->model = $model;
     }
 
-    public function getAll(){
+    public function getAll($params = ''){
         $pokemons = [];
-		$params = $this->helper->getParams();
-		parse_str($params, $params);
+		if(!$params) $params = $this->helper->getParams();
 
-		$content = $this->apiService->getContent($this->baseURL, $this->endpointAll, $params);
+		$content = $this->apiService->getContent($this->baseURL, $this->endpointAll . '?' . $params);
 		$this->message = $this->apiService->getResponse()->getStatusCode()!=200 ? $this->apiService->getResponse()->getReasonPhrase() : '';
 
 		if($content){
@@ -45,6 +50,19 @@ class PokeApi{
 
 	public function getMessage(){
 		return $this->message;
+	}
+
+	public function cron(){
+		$offset = $this->collection->create()->getSize();
+		$params = "limit=50&offset=$offset";
+		$pokemonArr = $this->getAll($params);
+		foreach($pokemonArr as $pokemon){
+			$pokemon['api_id'] = $pokemon['id']; 
+			$pokemon['id'] = null;
+			$model = $this->model->create();
+			$model->setData($pokemon);
+			$model->save();
+		}
 	}
 
 	public function parsePokemon($pokemon){
