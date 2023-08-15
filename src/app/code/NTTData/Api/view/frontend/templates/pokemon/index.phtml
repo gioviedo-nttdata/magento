@@ -1,8 +1,8 @@
 <?php
 
-if(!$block->isEnabled()){
+if(!$block->isEnabled() || !$block->showInStore()){
 
-    echo _('Module disabed');
+    echo _('Module disabled');
     
 }else{
     $data = $block->getDataPokemon();
