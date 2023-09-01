@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">company_employees_data.company_employees_data_listing_data_source</item>
+            <item name="deps" xsi:type="string">company_employees_data.company_employees_data_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">nttdata_company_employees_data_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add employee</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/new</item>
+            </item>
+        </item>
+    </argument>
+
+    <dataSource name="company_employees_data_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">company_employees_data_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+    <listingToolbar name="listing_top">
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls" />
+		<filterSearch name="fulltext"/>
+		<filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="observers" xsi:type="array">
+                    <item name="column" xsi:type="string">column</item>
+                </item>
+            </argument>
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+        </filters>
+		<massaction name="listing_massaction">
+            <action name="average_age">
+                <settings>
+                    <type>average_age</type>
+                    <label translate="true">Average age</label>
+                    <url path="company/employees/averageage"/>
+                </settings>
+            </action>
+        </massaction>
+		<paging name="listing_paging"/>
+    </listingToolbar>
+
+    <columns name="nttdata_company_employees_data_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                </item>
+            </argument>
+        </column>
+        <column name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="sortOrder" xsi:type="number">2</item>
+                </item>
+            </argument>
+        </column>
+        <column name="lastname">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Lastname</item>
+                    <item name="sortOrder" xsi:type="number">3</item>
+                </item>
+            </argument>
+        </column>
+        <column name="age">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Age</item>
+                    <item name="sortOrder" xsi:type="number">4</item>
+                </item>
+            </argument>
+        </column>
+        <column name="phone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Phone</item>
+                    <item name="sortOrder" xsi:type="number">5</item>
+                </item>
+            </argument>
+        </column>
+        <column name="job">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Job</item>
+                    <item name="sortOrder" xsi:type="number">6</item>
+                </item>
+            </argument>
+        </column>
+        <column name="specialty">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Specialty</item>
+                    <item name="sortOrder" xsi:type="number">7</item>
+                </item>
+            </argument>
+        </column>
+        <column name="contract">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Contract</item>
+                    <item name="sortOrder" xsi:type="number">8</item>
+                </item>
+            </argument>
+        </column>
+        <column name="health_insurance">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Health Insurance</item>
+                    <item name="sortOrder" xsi:type="number">9</item>
+                </item>
+            </argument>
+        </column>
+        <column name="hire_date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Hire date</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" class="NTTData\Company\Ui\Component\Listing\Column\Employees\Actions">
+            <settings>
+                <indexField>id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

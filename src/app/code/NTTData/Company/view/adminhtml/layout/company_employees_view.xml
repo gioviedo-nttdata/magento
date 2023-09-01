@@ -1,0 +1,25 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="NTTData\Company\Block\Adminhtml\Employees\View" name="company_employee_view"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="NTTData\Company\Block\Adminhtml\Employees\View\Tabs" name="company_employee_tabs">
+                <block class="NTTData\Company\Block\Adminhtml\Employees\View\Tab\PersonalInfo" name="employee_tab_personal_info" template="NTTData_Company::employees/tab/personal_info.phtml">
+                    <block class="NTTData\Company\Block\Adminhtml\Employees\View\PersonalInfo" name="employee_personal_info" template="NTTData_Company::employees/view/personal_info.phtml"/>
+                </block>
+                <block class="NTTData\Company\Block\Adminhtml\Employees\View\Tab\EmploymentInfo" name="employee_tab_employment_info" template="NTTData_Company::employees/tab/employment_info.phtml">
+                    <block class="NTTData\Company\Block\Adminhtml\Employees\View\EmploymentInfo" name="employee_employment_info" template="NTTData_Company::employees/view/employment_info.phtml"/>
+                </block>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">employee_personal_info</argument>
+                    <argument name="block" xsi:type="string">employee_tab_personal_info</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">employee_employment_info</argument>
+                    <argument name="block" xsi:type="string">employee_tab_employment_info</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

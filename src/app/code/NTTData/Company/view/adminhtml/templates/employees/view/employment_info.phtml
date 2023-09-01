@@ -1,0 +1,29 @@
+<?php
+$employee = $block->getEmployee();
+$employmentInfo = $block->getEmploymentInfo();
+?>
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Employee')) . ' #' . $employee->getId() . ' ' . $employee->getName() . ' ' . $employee->getLastname() ?></span>
+        <div class="actions"><a href="<?=$block->getEditUrl()?>">Edit</a></div>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item">
+            <div class="admin__page-section-item-title">
+                <span class="title">
+                    <?= __('Employment Information') ?>
+                </span>
+            </div>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary">
+                <?php foreach($employmentInfo as $key => $val){ ?>
+                    <tr>
+                        <th><?=__($key)?></th>
+                        <td><?=$val?></td>
+                    </tr>
+                    <?php } ?>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

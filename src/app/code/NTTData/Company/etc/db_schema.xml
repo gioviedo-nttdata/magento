@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="nttdata_company_employees" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="name" nullable="false"/>
+        <column xsi:type="text" name="lastname" nullable="false"/>
+        <column xsi:type="date" name="birth_date" nullable="false"/>
+        <column xsi:type="int" name="job_id" nullable="true"/>
+        <column xsi:type="int" name="specialty_id" nullable="true"/>
+        <column xsi:type="text" name="address" nullable="false"/>
+        <column xsi:type="text" name="phone" nullable="false"/>
+        <column xsi:type="text" name="civil_status" nullable="false"/>
+        <column xsi:type="int" name="academic_training_id" nullable="false"/>
+        <column xsi:type="date" name="hire_date" nullable="false"/>
+        <column xsi:type="date" name="egress_date" nullable="true"/>
+        <column xsi:type="int" name="workload_id" nullable="false"/>
+        <column xsi:type="int" name="seniority_id" nullable="false"/>
+        <column xsi:type="int" name="contract_id" nullable="false"/>
+        <column xsi:type="int" name="health_insurance_id" nullable="false"/>
+        <column xsi:type="int" name="health_insurance_type_id" nullable="false"/>
+        <column xsi:type="text" name="vacation_days" nullable="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_company_specialties" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="name" nullable="false"/>
+        <column xsi:type="int" name="job_id" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_company_jobs" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="name" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_company_health_insurance" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="name" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_company_health_insurance_types" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="name" nullable="false"/>
+        <column xsi:type="text" name="health_insurance_id" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_company_academic_training" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="name" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_company_seniorities" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="name" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_company_contracts" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="name" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="nttdata_company_workloads" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="text" name="name" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>
+

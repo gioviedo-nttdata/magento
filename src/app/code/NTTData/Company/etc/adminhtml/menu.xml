@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="NTTData_Company::company" title="Company" module="NTTData_Company" sortOrder="20" resource="NTTData_Company::company"/>
+        <add id="NTTData_Company::company_employees" title="Employees" module="NTTData_Company" sortOrder="1" action="company/employees" resource="NTTData_Company::company" parent="NTTData_Company::company"/>
+    </menu>
+</config>
