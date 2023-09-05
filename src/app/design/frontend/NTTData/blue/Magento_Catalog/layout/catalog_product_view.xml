@@ -1,0 +1,9 @@
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <remove src="css/blue.css" />
+    </head>
+    <body>
+        <move element="breadcrumbs" destination="product.info.price" />
+        <referenceBlock name="product.info.social" remove="true"/>
+    </body>
+</page>
