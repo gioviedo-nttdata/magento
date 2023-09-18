@@ -1,0 +1,111 @@
+<div class="block-bundle-summary">
+     <button>Sticky</button>
+</div>
+
+<script type="text/x-magento-init">
+ {
+   ".block-bundle-summary": {
+       "sticky": {
+         "container": "body"
+         }
+    }
+ }
+</script>
+
+<style>
+    #accordion h4{
+        cursor: pointer;
+    }
+</style>
+<div id="accordion" data-mage-init='{
+        "accordion":{
+            "active": [1, 2],
+            "collapsible": true,
+            "openedState": "active",
+            "multipleCollapsible": true
+        }}'>
+    <div data-role="collapsible">
+        <div data-role="trigger">
+            <h4>Title 1</h4>
+        </div>
+    </div>
+    <div data-role="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+
+    <div data-role="collapsible">
+        <div data-role="trigger">
+            <h4>Title 2</h4>
+        </div>
+    </div>
+    <div data-role="content"> It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+
+    <div data-role="collapsible">
+        <div data-role="trigger">
+            <h4>Title 3</h4>
+        </div>
+    </div>
+    <div data-role="content">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</div>
+</div>
+
+<div class="image-gallery"></div>
+
+
+<script>
+//Esto es notacion imperativa (se recomienda la notacion declarativa como las de arriba)
+require ([
+    'jquery',
+    'mage/gallery/gallery'
+], function ($, Gallery) {
+    $(function () {
+        $('.image-gallery').each(function (index, element) {
+            Gallery({
+                options: {
+                    "nav": "dots", //thumbs
+                    "loop": true,
+                },
+                data: [
+                    { img: "https://depor.com/resizer/fdj-hUfTGtdnGD_pNvOtAJGXo4Y=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/OQWAGUQKHRGKLDO754DTQIV4QU.jpg" },
+                    { img: "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2023/04/dragon-ball-super-nueva-figura-gigante-gohan-bestia-totalmente-oficial-serie-gigantic-3019126.jpg?tf=1200x" },
+                    { img: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/49b1ce177708485.64db759f2b2a8.jpg" }
+                    ],
+                fullscreen: {},
+                breakpoints: {}
+            }, element);
+        });
+    });
+});
+</script>
+
+<ul class="my-list">
+    <li>1st Element</li>
+    <li>2nd Element</li>
+    <li>3rd Element</li>
+    <li>4th Element</li>
+    <li>5th Element</li>
+    <li>6th Element</li>
+    <li>7th Element</li>
+    <li>8th Element</li>
+</ul>
+
+<script>
+   require([
+      'jquery',
+      'slick',
+      'domReady!'
+   ], function ($) {
+      $(".my-list").slick({
+         dots: true,
+         infinite: true,
+         speed: 300,
+         slidesToShow: 4,
+         slidesToScroll: 1
+      });
+   });
+</script>
+
+
+
+
+
+
+
+
