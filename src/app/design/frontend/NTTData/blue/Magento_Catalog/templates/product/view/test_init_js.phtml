@@ -17,6 +17,8 @@
         cursor: pointer;
     }
 </style>
+
+<!--Accordion-->
 <div id="accordion" data-mage-init='{
         "accordion":{
             "active": [1, 2],
@@ -92,6 +94,29 @@ require ([
 
 
 <div data-mage-init='{"stickyTest":{"message": "Hello World"}}'>Sticky en require</div>
+
+
+<!--Modal-->
+<button type="button" class="action" data-trigger="trigger">
+    <span data-bind="i18n: 'Click Here'"></span>
+</button>
+<div data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal':{
+            'type': 'popup',
+            'title': 'Popup title',
+            'trigger': '[data-trigger=trigger]',
+            'responsive': true,
+            'buttons': [{
+                text: jQuery.mage.__('Submit'),
+                class: 'action'
+            }]
+        }}">
+    <div class="content">
+        Popup Content
+    </div>
+</div>
+
+
 
 
 
