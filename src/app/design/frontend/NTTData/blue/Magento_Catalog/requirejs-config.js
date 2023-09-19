@@ -6,6 +6,11 @@ var config = {
         slick: {
             deps: ['jquery']
         }
-      }
+      },
+    map: {
+        "*": {
+        "stickyTest": "Magento_Catalog/js/pdpSticky"
+        }
+    }
    };
    

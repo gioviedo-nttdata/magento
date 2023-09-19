@@ -1,10 +1,10 @@
-<div class="block-bundle-summary">
+<div class="sticky-button">
      <button>Sticky</button>
 </div>
 
 <script type="text/x-magento-init">
  {
-   ".block-bundle-summary": {
+   ".sticky-button": {
        "sticky": {
          "container": "body"
          }
@@ -75,7 +75,11 @@ require ([
 });
 </script>
 
-<ul class="my-list">
+<ul class="my-list" data-mage-init='{"slick":{ "dots": true,
+         "infinite": true,
+         "speed": 300,
+         "slidesToShow": 4,
+         "slidesToScroll": 1}}'>
     <li>1st Element</li>
     <li>2nd Element</li>
     <li>3rd Element</li>
@@ -86,21 +90,8 @@ require ([
     <li>8th Element</li>
 </ul>
 
-<script>
-   require([
-      'jquery',
-      'slick',
-      'domReady!'
-   ], function ($) {
-      $(".my-list").slick({
-         dots: true,
-         infinite: true,
-         speed: 300,
-         slidesToShow: 4,
-         slidesToScroll: 1
-      });
-   });
-</script>
+
+<div data-mage-init='{"stickyTest":{"message": "Hello World"}}'>Sticky en require</div>
 
 
 
