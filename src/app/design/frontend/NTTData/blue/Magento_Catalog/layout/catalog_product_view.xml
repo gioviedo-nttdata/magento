@@ -7,9 +7,12 @@
         <referenceBlock name="product.info.social" remove="true"/>
         <referenceContainer name="page.wrapper">
             <block class="Magento\Framework\View\Element\Template" name="test.init.js" template="Magento_Catalog::product/view/test_init_js.phtml" />
-            <block class="Magento\Cms\Block\Block" name="test-block">
+        </referenceContainer>
+
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="test.block.1" after="-">
                 <arguments>
-                    <argument name="test_block" xsi:type="string">test-block</argument>
+                    <argument name="block_id" xsi:type="string">test_block</argument>
                 </arguments>
             </block>
         </referenceContainer>
